@@ -11,6 +11,9 @@ var express = require('express');
 var app = express();
 var xhub = require('express-x-hub');
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, 'Listening on port ' + PORT + '...');
+
 app.use(xhub({ algorithm: 'sha1', secret: process.env.APP_SECRET }));
 app.use(bodyParser.json());
 
@@ -62,5 +65,5 @@ app.post('/instagram', function(req, res) {
   console.log(req.body);
   res.sendStatus(200);
 });
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, 'Listening on port ' + PORT + '...');
+
+app.listen();
