@@ -11,9 +11,8 @@ var express = require('express');
 var app = express();
 var xhub = require('express-x-hub');
 
-const PORT = process.env.PORT || 3000;
-app.set('port', PORT);
-app.listen(app.get('port'), 'Listening on port ' + PORT + '...');
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'));
 
 app.use(xhub({ algorithm: 'sha1', secret: process.env.APP_SECRET }));
 app.use(bodyParser.json());
